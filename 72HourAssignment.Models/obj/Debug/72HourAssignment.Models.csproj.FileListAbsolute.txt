@@ -1,0 +1,1 @@
+C:\ElevenFiftyProjects\DotNetProjects\72 Hour\72HourAssignment.Models\obj\Debug\72HourAssignment.Models.csproj.CoreCompileInputs.cache

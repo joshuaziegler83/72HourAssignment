@@ -1,0 +1,2 @@
+C:\ElevenFiftyProjects\DotNetProjects\72 Hour\72HourAssignment.WebAPI\obj\Debug\72HourAssignment.WebAPI.csproj.AssemblyReference.cache
+C:\ElevenFiftyProjects\DotNetProjects\72 Hour\72HourAssignment.WebAPI\obj\Debug\72HourAssignment.WebAPI.csproj.CoreCompileInputs.cache

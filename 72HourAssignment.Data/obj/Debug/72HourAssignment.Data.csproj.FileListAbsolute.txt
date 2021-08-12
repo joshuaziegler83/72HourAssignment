@@ -1,0 +1,2 @@
+C:\ElevenFiftyProjects\DotNetProjects\72 Hour\72HourAssignment.Data\obj\Debug\72HourAssignment.Data.csproj.AssemblyReference.cache
+C:\ElevenFiftyProjects\DotNetProjects\72 Hour\72HourAssignment.Data\obj\Debug\72HourAssignment.Data.csproj.CoreCompileInputs.cache
