@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _72HourAssignment.Models
+namespace _72HourAssignment.Data
 {
     public class Post
     {

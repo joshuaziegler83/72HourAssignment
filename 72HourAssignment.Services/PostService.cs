@@ -1,10 +1,11 @@
-﻿using _72HourAssignment.Models;
-using _72HourAssignment.WebAPI.Models;
+﻿using _72HourAssignment.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+
 
 namespace _72HourAssignment.Services
 {
@@ -35,79 +36,79 @@ namespace _72HourAssignment.Services
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotes()
+        public IEnumerable<Post> GetPosts()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Notes
-                    .Where(e => e.OwnerId == _userId)
+                    .Posts
+                    .Where(e => e.AuthorId == _AuthorId)
                     .Select(
                         e =>
-                        new NoteListItem
+                        new Post
                         {
-                            NoteID = e.NoteId,
+                            Id = e.Id,
                             Title = e.Title,
-                            CreatedUtc = e.CreatedUtc,
+                            Text = e.Text,
+                            AuthorId = _AuthorId,
                         }
                     );
                 return query.ToArray();
             }
         }
 
-        public NoteDetail GetNoteById(int id)
+        public Post GetPostById(int id, Guid AuthorId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Notes
-                    .Single(e => e.NoteId == id && e.OwnerId == _userId);
+                    .Posts
+                    .Single(e => e.Id == id && e.AuthorId == _AuthorId);
                 return
-                    new NoteDetail
+                    new Post
                     {
-                        NoteId = entity.NoteId,
+                        Id = entity.Id,
                         Title = entity.Title,
-                        Content = entity.Content,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        Text = entity.Text,
+                        AuthorId = _AuthorId,
+
                     };
             }
         }
 
-        public bool UpdateNote(NoteEdit model)
+        public bool UpdateNote(Post model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Notes
-                        .Single(e => e.NoteId == model.NoteId && e.OwnerId == _userId);
+                        .Posts
+                        .Single(e => e.Id == model.Id && e.AuthorId == _AuthorId);
 
+                entity.Id = model.Id;
                 entity.Title = model.Title;
-                entity.Content = model.Content;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.Text = model.Text;
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public bool DeleteNote(int noteId)
+        public bool DeletePost(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Notes
-                        .Single(e => e.NoteId == noteId && e.OwnerId == _userId);
+                        .Posts
+                        .Single(e => e.Id == Id && e.AuthorId == _AuthorId);
 
-                ctx.Notes.Remove(entity);
+                ctx.Posts.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
         }
     }
+}
 
-}
-}

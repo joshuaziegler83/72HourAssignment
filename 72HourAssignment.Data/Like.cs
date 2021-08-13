@@ -6,23 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _72HourAssignment.Models
+namespace _72HourAssignment.Data
 {
-    public class Reply
+    public class Like
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [ForeignKey(nameof(Comment))]
-        public int CommentId { get; set; }
-
-        public virtual ICollection<Comment> Comments { get; set; }
+        [ForeignKey(nameof(Post))]
+        public virtual ICollection<Post> Posts { get; set; }
 
         [Required]
-        public string Text { get; set; }  
-        
-        [Required]
-        public Guid AuthorId { get; set; }
+        public Guid OwnerId { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using _72HourAssignment.WebAPI.Models;
+using _72HourAssignment.Data;
 
 namespace _72HourAssignment.WebAPI
 {

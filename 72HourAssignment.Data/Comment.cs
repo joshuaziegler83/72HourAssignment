@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _72HourAssignment.Models
+namespace _72HourAssignment.Data
 {
     public class Comment
     {
@@ -23,7 +23,6 @@ namespace _72HourAssignment.Models
         [Required]
         [ForeignKey(nameof(Post))]
         public int PostId { get; set; }
-
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual Post Post { get; set; }
     }
 }
